@@ -1,4 +1,5 @@
 # AgiBot Raise A3 Ultra USD
+[English](./README_EN.md)
 
 [![USD](https://img.shields.io/badge/format-OpenUSD-7A4EAB)](https://openusd.org/)
 [![Isaac Sim](https://img.shields.io/badge/Isaac%20Sim-6.0.1-76B900)](https://developer.nvidia.com/isaac/sim)
