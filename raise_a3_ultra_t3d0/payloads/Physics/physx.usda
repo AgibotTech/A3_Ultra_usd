@@ -1,0 +1,1015 @@
+#usda 1.0
+(
+    defaultPrim = "agibot_a3"
+    doc = """PhysX physics layer (Structure 3.0).
+Sublayers physics.usda and adds PhysX-specific APIs/attributes."""
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "agibot_a3"
+{
+    def Xform "pelvis_link" (
+        prepend apiSchemas = ["PhysxArticulationAPI"]
+    )
+    {
+        custom bool physxArticulation:enabledSelfCollisions = 0
+        custom int physxArticulation:solverPositionIterationCount = 32
+        custom int physxArticulation:solverVelocityIterationCount = 1
+
+        def PhysicsRevoluteJoint "left_hip_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 690
+        }
+
+        def PhysicsRevoluteJoint "right_hip_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 690
+        }
+
+        def PhysicsRevoluteJoint "waist_yaw_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.04
+            custom float physxJoint:maxJointVelocity = 690
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_hip_pitch_Link"
+    {
+        def PhysicsRevoluteJoint "left_hip_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 690
+        }
+    }
+
+    def Xform "left_hip_roll_Link"
+    {
+        def PhysicsRevoluteJoint "left_hip_yaw_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 690
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_hip_yaw_Link"
+    {
+        def PhysicsRevoluteJoint "left_knee_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 840
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_knee_Link"
+    {
+        def PhysicsRevoluteJoint "left_ankle_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 618.79443
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_ankle_pitch_Link"
+    {
+        def PhysicsRevoluteJoint "left_ankle_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 1109.8193
+        }
+    }
+
+    def Xform "right_hip_pitch_Link"
+    {
+        def PhysicsRevoluteJoint "right_hip_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 690
+        }
+    }
+
+    def Xform "right_hip_roll_Link"
+    {
+        def PhysicsRevoluteJoint "right_hip_yaw_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 690
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_hip_yaw_Link"
+    {
+        def PhysicsRevoluteJoint "right_knee_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 840
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_knee_Link"
+    {
+        def PhysicsRevoluteJoint "right_ankle_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 618.79443
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_ankle_pitch_Link"
+    {
+        def PhysicsRevoluteJoint "right_ankle_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0
+            custom float physxJoint:maxJointVelocity = 1109.8193
+        }
+    }
+
+    def Xform "waist_yaw_Link"
+    {
+        def PhysicsRevoluteJoint "waist_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.04
+            custom float physxJoint:maxJointVelocity = 1300.6143
+        }
+    }
+
+    def Xform "waist_roll_Link"
+    {
+        def PhysicsRevoluteJoint "waist_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 529.8628
+        }
+    }
+
+    def Xform "torso_Link"
+    {
+        def PhysicsRevoluteJoint "head_yaw_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 732
+        }
+
+        def PhysicsRevoluteJoint "left_shoulder_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 780
+        }
+
+        def PhysicsRevoluteJoint "right_shoulder_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 780
+        }
+    }
+
+    def Xform "head_yaw_Link"
+    {
+        def PhysicsRevoluteJoint "head_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.05
+            custom float physxJoint:maxJointVelocity = 732
+        }
+    }
+
+    def Xform "left_shoulder_pitch_Link"
+    {
+        def PhysicsRevoluteJoint "left_shoulder_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 780
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_shoulder_roll_Link"
+    {
+        def PhysicsRevoluteJoint "left_shoulder_yaw_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 900
+        }
+    }
+
+    def Xform "left_shoulder_yaw_Link"
+    {
+        def PhysicsRevoluteJoint "left_elbow_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 900
+        }
+    }
+
+    def Xform "left_elbow_Link"
+    {
+        def PhysicsRevoluteJoint "left_wrist_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.05
+            custom float physxJoint:maxJointVelocity = 900
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_wrist_roll_Link"
+    {
+        def PhysicsRevoluteJoint "left_wrist_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 732
+        }
+    }
+
+    def Xform "left_wrist_pitch_Link"
+    {
+        def PhysicsRevoluteJoint "left_wrist_yaw_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 732
+        }
+    }
+
+    def Xform "right_shoulder_pitch_Link"
+    {
+        def PhysicsRevoluteJoint "right_shoulder_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 780
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_shoulder_roll_Link"
+    {
+        def PhysicsRevoluteJoint "right_shoulder_yaw_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 900
+        }
+    }
+
+    def Xform "right_shoulder_yaw_Link"
+    {
+        def PhysicsRevoluteJoint "right_elbow_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 900
+        }
+    }
+
+    def Xform "right_elbow_Link"
+    {
+        def PhysicsRevoluteJoint "right_wrist_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.05
+            custom float physxJoint:maxJointVelocity = 900
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_wrist_roll_Link"
+    {
+        def PhysicsRevoluteJoint "right_wrist_pitch_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 732
+        }
+    }
+
+    def Xform "right_wrist_pitch_Link"
+    {
+        def PhysicsRevoluteJoint "right_wrist_yaw_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:jointFriction = 0.01
+            custom float physxJoint:maxJointVelocity = 732
+        }
+    }
+
+    def Xform "R_index_abad_link"
+    {
+        def PhysicsRevoluteJoint "R_index_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "R_index_pip_link"
+    {
+        def PhysicsRevoluteJoint "R_index_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_middle_abad_link"
+    {
+        def PhysicsRevoluteJoint "R_middle_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "R_middle_pip_link"
+    {
+        def PhysicsRevoluteJoint "R_middle_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_palm"
+    {
+        def PhysicsRevoluteJoint "R_index_abad_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 126.2799
+        }
+
+        def PhysicsRevoluteJoint "R_pinky_abad_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 69.327896
+        }
+
+        def PhysicsRevoluteJoint "R_ring_abad_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 85.02693
+        }
+
+        def PhysicsRevoluteJoint "R_thumb_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 500.13486
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_pinky_abad_link"
+    {
+        def PhysicsRevoluteJoint "R_pinky_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "R_pinky_pip_link"
+    {
+        def PhysicsRevoluteJoint "R_pinky_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_ring_abad_link"
+    {
+        def PhysicsRevoluteJoint "R_ring_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "R_ring_pip_link"
+    {
+        def PhysicsRevoluteJoint "R_ring_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_thumb_abad_link"
+    {
+        def PhysicsRevoluteJoint "R_thumb_mcp_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "R_thumb_mcp_link"
+    {
+        def PhysicsRevoluteJoint "R_thumb_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_thumb_pip_link"
+    {
+        def PhysicsRevoluteJoint "R_thumb_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_thumb_roll_link"
+    {
+        def PhysicsRevoluteJoint "R_thumb_abad_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 666.69366
+        }
+    }
+
+    def Xform "L_index_abad_link"
+    {
+        def PhysicsRevoluteJoint "L_index_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "L_index_pip_link"
+    {
+        def PhysicsRevoluteJoint "L_index_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_middle_abad_link"
+    {
+        def PhysicsRevoluteJoint "L_middle_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "L_middle_pip_link"
+    {
+        def PhysicsRevoluteJoint "L_middle_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_palm"
+    {
+        def PhysicsRevoluteJoint "L_index_abad_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 126.2799
+        }
+
+        def PhysicsRevoluteJoint "L_pinky_abad_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 69.327896
+        }
+
+        def PhysicsRevoluteJoint "L_ring_abad_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 85.02693
+        }
+
+        def PhysicsRevoluteJoint "L_thumb_roll_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 500.13486
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_pinky_abad_link"
+    {
+        def PhysicsRevoluteJoint "L_pinky_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "L_pinky_pip_link"
+    {
+        def PhysicsRevoluteJoint "L_pinky_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_ring_abad_link"
+    {
+        def PhysicsRevoluteJoint "L_ring_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "L_ring_pip_link"
+    {
+        def PhysicsRevoluteJoint "L_ring_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_thumb_abad_link"
+    {
+        def PhysicsRevoluteJoint "L_thumb_mcp_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+    }
+
+    def Xform "L_thumb_mcp_link"
+    {
+        def PhysicsRevoluteJoint "L_thumb_pip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_thumb_pip_link"
+    {
+        def PhysicsRevoluteJoint "L_thumb_dip_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 222.25032
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_thumb_roll_link"
+    {
+        def PhysicsRevoluteJoint "L_thumb_abad_joint" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            custom float physxJoint:maxJointVelocity = 666.69366
+        }
+    }
+
+    def Xform "left_ankle_roll_Link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_ankle_roll_Link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_index_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_middle_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_pinky_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_ring_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_thumb_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_index_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_middle_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_pinky_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_ring_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_thumb_dip_link"
+    {
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysxCollisionAPI", "PhysxConvexHullCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+}
+

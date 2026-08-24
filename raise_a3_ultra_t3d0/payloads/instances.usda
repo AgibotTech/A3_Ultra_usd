@@ -1,0 +1,1059 @@
+#usda 1.0
+(
+    doc = """Instances layer (Structure 3.0).
+Visual (+ collider geom) assemblies referencing geometries.usd.
+Collision APIs live in Physics layers as overs on /agibot_a3/.../colliders/collider."""
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Scope "Instances"
+{
+    def Xform "pelvis_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/pelvis_link_visuals>
+        )
+        {
+            token visibility = "inherited"
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/pelvis_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "imu_in_pelvis_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/imu_in_pelvis_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "left_hip_pitch_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_hip_pitch_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "left_hip_roll_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_hip_roll_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/left_hip_roll_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "left_hip_yaw_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_hip_yaw_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/left_hip_yaw_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "left_knee_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_knee_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/left_knee_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "left_ankle_pitch_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_ankle_pitch_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "left_ankle_roll_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_ankle_roll_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/left_ankle_roll_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "left_knee_shell_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_knee_shell_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "right_hip_pitch_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_hip_pitch_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "right_hip_roll_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_hip_roll_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/right_hip_roll_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "right_hip_yaw_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_hip_yaw_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/right_hip_yaw_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "right_knee_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_knee_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/right_knee_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "right_ankle_pitch_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_ankle_pitch_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "right_ankle_roll_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_ankle_roll_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/right_ankle_roll_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "right_knee_shell_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_knee_shell_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "waist_yaw_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/waist_yaw_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "waist_roll_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/waist_roll_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "torso_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/torso_Link_visuals>
+        )
+        {
+            token visibility = "inherited"
+        }
+    }
+
+    def Xform "head_yaw_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/head_yaw_Link_visuals>
+        )
+        {
+            token visibility = "inherited"
+        }
+    }
+
+    def Xform "head_pitch_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/head_pitch_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "imu_in_torso_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/imu_in_torso_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "left_shoulder_pitch_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_shoulder_pitch_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/left_shoulder_pitch_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "left_shoulder_roll_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_shoulder_roll_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "left_shoulder_yaw_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_shoulder_yaw_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "left_elbow_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_elbow_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/left_elbow_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "left_wrist_roll_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_wrist_roll_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "left_wrist_pitch_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_wrist_pitch_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "left_wrist_yaw_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/left_wrist_yaw_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "right_shoulder_pitch_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_shoulder_pitch_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/right_shoulder_pitch_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "right_shoulder_roll_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_shoulder_roll_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "right_shoulder_yaw_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_shoulder_yaw_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "right_elbow_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_elbow_Link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/right_elbow_Link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "right_wrist_roll_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_wrist_roll_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "right_wrist_pitch_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_wrist_pitch_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "right_wrist_yaw_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/right_wrist_yaw_Link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "torso_shell_Link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/torso_shell_Link_visuals>
+        )
+        {
+            token visibility = "inherited"
+        }
+    }
+
+    def Xform "R_index_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_index_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_index_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_index_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_index_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_index_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_index_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_index_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_index_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_index_tip_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_middle_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_middle_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_middle_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_middle_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_middle_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_middle_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_middle_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_middle_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_middle_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_middle_tip_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_palm"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_palm_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_palm_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_pinky_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_pinky_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_pinky_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_pinky_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_pinky_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_pinky_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_pinky_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_pinky_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_pinky_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_pinky_tip_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_ring_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_ring_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_ring_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_ring_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_ring_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_ring_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_ring_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_ring_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_ring_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_ring_tip_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_thumb_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_thumb_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_thumb_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_thumb_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_thumb_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_thumb_mcp_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_thumb_mcp_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_thumb_mcp_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_thumb_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_thumb_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/R_thumb_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "R_thumb_roll_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_thumb_roll_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "R_thumb_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/R_thumb_tip_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_index_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_index_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_index_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_index_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_index_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_index_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_index_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_index_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_index_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_index_tip_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_middle_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_middle_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_middle_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_middle_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_middle_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_middle_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_middle_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_middle_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_middle_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_middle_tip_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_palm"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_palm_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_palm_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_pinky_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_pinky_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_pinky_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_pinky_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_pinky_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_pinky_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_pinky_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_pinky_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_pinky_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_pinky_tip_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_ring_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_ring_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_ring_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_ring_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_ring_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_ring_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_ring_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_ring_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_ring_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_ring_tip_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_thumb_abad_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_thumb_abad_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_thumb_dip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_thumb_dip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_thumb_dip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_thumb_mcp_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_thumb_mcp_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_thumb_mcp_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_thumb_pip_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_thumb_pip_link_visuals>
+        )
+        {
+        }
+
+        def Mesh "collider" (
+            delete apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI"]
+            prepend references = @./geometries.usd@</Geometries/L_thumb_pip_link_visuals>
+        )
+        {
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Xform "L_thumb_roll_link"
+    {
+        def Mesh "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_thumb_roll_link_visuals>
+        )
+        {
+        }
+    }
+
+    def Xform "L_thumb_tip"
+    {
+        def Sphere "visuals" (
+            prepend references = @./geometries.usd@</Geometries/L_thumb_tip_visuals>
+        )
+        {
+        }
+    }
+}
+

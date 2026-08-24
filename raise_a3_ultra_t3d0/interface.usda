@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    defaultPrim = "agibot_a3"
+    doc = """Raise A3 Ultra T3D0 — Isaac Sim 6.0.1 Asset Structure 3.0 interface.
+
+Composition (matches official Structure 3.0 example layout):
+  - references payloads/base.usda (hierarchy + visual/collider instances)
+  - sublayers payloads/robot.usda (Isaac Robot Schema)
+  - Physics variant payloads: none | physics | physx | mujoco
+      physics -> payloads/Physics/physics.usda (engine-neutral)
+      physx   -> payloads/Physics/physx.usda (sublayers physics.usda)
+      mujoco  -> payloads/Physics/mujoco.usda (sublayers physics.usda)
+  - geometries remain binary under payloads/geometries.usd
+"""
+    metersPerUnit = 1
+    upAxis = "Z"
+    subLayers = [
+        @./payloads/robot.usda@
+    ]
+)
+
+def Xform "agibot_a3" (
+    prepend references = @./payloads/base.usda@</agibot_a3>
+    append variantSets = "Physics"
+    variants = {
+        string Physics = "physx"
+    }
+)
+{
+    variantSet "Physics" = {
+        "none" {
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+        }
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+        }
+    }
+}

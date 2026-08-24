@@ -1,0 +1,284 @@
+#usda 1.0
+(
+    defaultPrim = "agibot_a3"
+    doc = "Materials layer (Structure 3.0). Visual materials + shaders under /agibot_a3/Looks."
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "agibot_a3"
+{
+    def Scope "Looks"
+    {
+        def Material "material_191919" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:mdl:displacement.connect = </agibot_a3/Looks/material_191919/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </agibot_a3/Looks/material_191919/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </agibot_a3/Looks/material_191919/Shader.outputs:out>
+            float physics:dynamicFriction = 0.8
+            float physics:staticFriction = 0.8
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (0.1, 0.1, 0.1)
+                token outputs:out
+            }
+        }
+
+        def Material "material_100100100"
+        {
+            token outputs:mdl:displacement.connect = </agibot_a3/Looks/material_100100100/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </agibot_a3/Looks/material_100100100/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </agibot_a3/Looks/material_100100100/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (1, 1, 1)
+                token outputs:out
+            }
+        }
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mdl:displacement.connect = </agibot_a3/Looks/DefaultMaterial/DefaultMaterial.outputs:out>
+            token outputs:mdl:surface.connect = </agibot_a3/Looks/DefaultMaterial/DefaultMaterial.outputs:out>
+            token outputs:mdl:volume.connect = </agibot_a3/Looks/DefaultMaterial/DefaultMaterial.outputs:out>
+            custom uniform bool paused = 0 (
+                customData = {
+                    bool nonpersistant = 1
+                }
+                hidden = true
+            )
+
+            def Shader "DefaultMaterial"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (1, 1, 1) (
+                    customData = {
+                        float3 default = (1, 1, 1)
+                        dictionary range = {
+                            float3 max = (1, 1, 1)
+                            float3 min = (0, 0, 0)
+                        }
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Base Color"
+                )
+                color3f inputs:emissive_color = (1, 1, 1) (
+                    customData = {
+                        float3 default = (1, 1, 1)
+                        dictionary range = {
+                            float3 max = (1, 1, 1)
+                            float3 min = (0, 0, 0)
+                        }
+                    }
+                    displayGroup = "Emissive"
+                    displayName = "Emissive Color"
+                )
+                float inputs:emissive_intensity = 10000 (
+                    customData = {
+                        float default = 10000
+                        dictionary range = {
+                            float max = 100000
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Emissive"
+                    displayName = "Emissive Intensity"
+                )
+                bool inputs:enable_emission = 0 (
+                    customData = {
+                        bool default = 0
+                    }
+                    displayGroup = "Emissive"
+                    displayName = "Enable Emission"
+                )
+                bool inputs:enable_opacity = 0 (
+                    customData = {
+                        bool default = 0
+                    }
+                    displayGroup = "Opacity"
+                    displayName = "Enable Opacity"
+                )
+                bool inputs:enable_opacity_texture = 0 (
+                    customData = {
+                        bool default = 0
+                    }
+                    displayGroup = "Opacity"
+                    displayName = "Enable Opacity Texture"
+                )
+                float inputs:opacity_constant = 1 (
+                    customData = {
+                        float default = 1
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Opacity"
+                    displayName = "Opacity Amount"
+                )
+                int inputs:opacity_mode = 1 (
+                    customData = {
+                        int default = 1
+                        dictionary range = {
+                            int max = 3
+                            int min = 0
+                        }
+                    }
+                    displayGroup = "Opacity"
+                    displayName = "Opacity Mono Source"
+                    renderType = "::base::mono_mode"
+                    sdrMetadata = {
+                        string __SDR__enum_value = "mono_average"
+                        string options = "mono_alpha:0|mono_average:1|mono_luminance:2|mono_maximum:3"
+                    }
+                )
+                float inputs:opacity_threshold = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Opacity"
+                    displayName = "Opacity Threshold"
+                )
+                float inputs:texture_rotate = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 360
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "UV"
+                    displayName = "Texture Rotate"
+                )
+                float2 inputs:texture_scale = (1, 1) (
+                    customData = {
+                        float2 default = (1, 1)
+                    }
+                    displayGroup = "UV"
+                    displayName = "Texture Scale"
+                )
+                float2 inputs:texture_translate = (0, 0) (
+                    customData = {
+                        float2 default = (0, 0)
+                    }
+                    displayGroup = "UV"
+                    displayName = "Texture Translate"
+                )
+                token outputs:out
+            }
+        }
+
+        def Material "material_blue"
+        {
+            token outputs:mdl:displacement.connect = </agibot_a3/Looks/material_blue/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </agibot_a3/Looks/material_blue/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </agibot_a3/Looks/material_blue/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (0, 0, 0.8)
+                token outputs:out
+            }
+        }
+
+        def Material "material_brown"
+        {
+            token outputs:mdl:displacement.connect = </agibot_a3/Looks/material_brown/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </agibot_a3/Looks/material_brown/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </agibot_a3/Looks/material_brown/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (0.87058824, 0.8117647, 0.7647059)
+                token outputs:out
+            }
+        }
+
+        def Material "material_green"
+        {
+            token outputs:mdl:displacement.connect = </agibot_a3/Looks/material_green/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </agibot_a3/Looks/material_green/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </agibot_a3/Looks/material_green/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (0, 0.8, 0)
+                token outputs:out
+            }
+        }
+
+        def Material "material_orange"
+        {
+            token outputs:mdl:displacement.connect = </agibot_a3/Looks/material_orange/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </agibot_a3/Looks/material_orange/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </agibot_a3/Looks/material_orange/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (1, 0.42352942, 0.039215688)
+                token outputs:out
+            }
+        }
+
+        def Material "material_silver"
+        {
+            token outputs:mdl:displacement.connect = </agibot_a3/Looks/material_silver/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </agibot_a3/Looks/material_silver/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </agibot_a3/Looks/material_silver/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (0.9137255, 0.9137255, 0.84705883)
+                token outputs:out
+            }
+        }
+
+        def Material "material_white"
+        {
+            token outputs:mdl:displacement.connect = </agibot_a3/Looks/material_white/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </agibot_a3/Looks/material_white/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </agibot_a3/Looks/material_white/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (1, 1, 1)
+                token outputs:out
+            }
+        }
+    }
+}
+

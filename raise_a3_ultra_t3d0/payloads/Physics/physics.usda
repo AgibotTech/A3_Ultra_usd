@@ -1,0 +1,2969 @@
+#usda 1.0
+(
+    defaultPrim = "agibot_a3"
+    doc = """Neutral Physics layer (Structure 3.0).
+Rigid bodies, masses, joints, drives, and USD collision APIs."""
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "agibot_a3"
+{
+    def Xform "pelvis_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysicsArticulationRootAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.00124899, 0.00003059, -0.12701365)
+        float3 physics:diagonalInertia = (0.02305696, 0.018337803, 0.014130445)
+        float physics:mass = 4.982249
+        quatf physics:principalAxes = (0.999998, 0.001971689, -0.000107585845, -0.0003575229)
+
+        def PhysicsFixedJoint "imu_in_pelvis_joint"
+        {
+            rel physics:body0 = </agibot_a3/pelvis_link>
+            rel physics:body1 = </agibot_a3/imu_in_pelvis_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.00437, 0, -0.21165)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "left_hip_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 220
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/pelvis_link>
+            rel physics:body1 = </agibot_a3/left_hip_pitch_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0.12298, -0.17875)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9914448, -0.1305265, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -144
+            float physics:upperLimit = 168
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "right_hip_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 220
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/pelvis_link>
+            rel physics:body1 = </agibot_a3/right_hip_pitch_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, -0.12298, -0.17875)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9914448, 0.1305265, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -144
+            float physics:upperLimit = 168
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "waist_yaw_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 220
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/pelvis_link>
+            rel physics:body1 = </agibot_a3/waist_yaw_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -149.99998
+            float physics:upperLimit = 149.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "imu_in_pelvis_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.00319251, 0.01088, -0.00140846)
+        float3 physics:diagonalInertia = (0.00000286, 0.00000278, 0.00000527)
+        float physics:mass = 0.02
+        quatf physics:principalAxes = (1, 0, 0, 0)
+    }
+
+    def Xform "left_hip_pitch_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00721133, 0.00458584, -0.03644475)
+        float3 physics:diagonalInertia = (0.0036040677, 0.003059675, 0.0020624974)
+        float physics:mass = 1.8734592
+        quatf physics:principalAxes = (0.95537555, 0.2914535, -0.029974854, -0.03760195)
+
+        def PhysicsRevoluteJoint "left_hip_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 220
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/left_hip_pitch_Link>
+            rel physics:body1 = </agibot_a3/left_hip_roll_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0.011316, -0.042233)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9914448, 0.1305265, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -30
+            float physics:upperLimit = 84.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "left_hip_roll_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.00491752, 0.00270388, -0.02980601)
+        float3 physics:diagonalInertia = (0.0017335167, 0.0025891904, 0.002196273)
+        float physics:mass = 0.74493
+        quatf physics:principalAxes = (0.9996318, 0.0058442755, -0.025132338, 0.008395682)
+
+        def PhysicsRevoluteJoint "left_hip_yaw_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 220
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/left_hip_roll_Link>
+            rel physics:body1 = </agibot_a3/left_hip_yaw_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -156
+            float physics:upperLimit = 156
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "left_hip_yaw_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00514402, -0.00057695, -0.17551805)
+        float3 physics:diagonalInertia = (0.030478084, 0.030024309, 0.0057458444)
+        float physics:mass = 2.645635
+        quatf physics:principalAxes = (0.9985869, -0.0068251016, -0.029309321, -0.043802164)
+
+        def PhysicsRevoluteJoint "left_knee_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 320
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/left_hip_yaw_Link>
+            rel physics:body1 = </agibot_a3/left_knee_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, -0.37)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -6.9999995
+            float physics:upperLimit = 144.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "left_knee_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00089998, -0.0008566, -0.11603511)
+        float3 physics:diagonalInertia = (0.08707462, 0.0887092, 0.007946682)
+        float physics:mass = 5.2362447
+        quatf physics:principalAxes = (0.9988829, 0.004392881, 0.0147767225, 0.04466893)
+
+        def PhysicsRevoluteJoint "left_ankle_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 118.2
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/left_knee_Link>
+            rel physics:body1 = </agibot_a3/left_ankle_pitch_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, -0.415)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -51.999996
+            float physics:upperLimit = 30
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsFixedJoint "left_knee_shell_joint"
+        {
+            rel physics:body0 = </agibot_a3/left_knee_Link>
+            rel physics:body1 = </agibot_a3/left_knee_shell_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "left_ankle_pitch_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00315163, 0, 0.00019267)
+        float3 physics:diagonalInertia = (0.000023079738, 0.00001751, 0.000036960257)
+        float physics:mass = 0.10100813
+        quatf physics:principalAxes = (0.9999977, 0, 0.0021613284, 0)
+
+        def PhysicsRevoluteJoint "left_ankle_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 54.75
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/left_ankle_pitch_Link>
+            rel physics:body1 = </agibot_a3/left_ankle_roll_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -19.999998
+            float physics:upperLimit = 19.999998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "left_ankle_roll_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.02822865, 0, -0.04852669)
+        float3 physics:diagonalInertia = (0.0007907104, 0.00404434, 0.00418238)
+        float physics:mass = 0.8254499
+        quatf physics:principalAxes = (0.99904764, 0.000019330113, 0.04363306, 0.000008349888)
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexDecomposition"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "left_knee_shell_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, 0, 0)
+        float3 physics:diagonalInertia = (0, 0, 0)
+        float physics:mass = 0
+        quatf physics:principalAxes = (1, 0, 0, 0)
+    }
+
+    def Xform "right_hip_pitch_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00721166, -0.00459403, -0.03644413)
+        float3 physics:diagonalInertia = (0.0036044957, 0.0030602315, 0.002062223)
+        float physics:mass = 1.8734636
+        quatf physics:principalAxes = (0.9553005, -0.29163605, -0.029917924, 0.038137052)
+
+        def PhysicsRevoluteJoint "right_hip_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 220
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/right_hip_pitch_Link>
+            rel physics:body1 = </agibot_a3/right_hip_roll_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.0011, -0.011316, -0.042233)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9914448, -0.1305265, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -84.99999
+            float physics:upperLimit = 30
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "right_hip_roll_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.00490292, -0.00270519, -0.02980487)
+        float3 physics:diagonalInertia = (0.0017335044, 0.0025892702, 0.0021962954)
+        float physics:mass = 0.7449139
+        quatf physics:principalAxes = (0.9996418, -0.0058698934, -0.024728213, -0.008388439)
+
+        def PhysicsRevoluteJoint "right_hip_yaw_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 220
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/right_hip_roll_Link>
+            rel physics:body1 = </agibot_a3/right_hip_yaw_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -156
+            float physics:upperLimit = 156
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "right_hip_yaw_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00514477, 0.00058875, -0.17543381)
+        float3 physics:diagonalInertia = (0.030490907, 0.03003376, 0.0057507497)
+        float physics:mass = 2.6488814
+        quatf physics:principalAxes = (0.99876356, 0.0068547283, -0.029176047, 0.039663523)
+
+        def PhysicsRevoluteJoint "right_knee_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 320
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/right_hip_yaw_Link>
+            rel physics:body1 = </agibot_a3/right_knee_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, -0.37)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -6.9999995
+            float physics:upperLimit = 144.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "right_knee_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00135435, 0.00032516, -0.11789631)
+        float3 physics:diagonalInertia = (0.09162639, 0.09316342, 0.0077667446)
+        float physics:mass = 5.2315516
+        quatf physics:principalAxes = (0.99986935, -0.0078677125, 0.012917491, -0.005714894)
+
+        def PhysicsRevoluteJoint "right_ankle_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 118.2
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/right_knee_Link>
+            rel physics:body1 = </agibot_a3/right_ankle_pitch_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, -0.415)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -51.999996
+            float physics:upperLimit = 30
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsFixedJoint "right_knee_shell_joint"
+        {
+            rel physics:body0 = </agibot_a3/right_knee_Link>
+            rel physics:body1 = </agibot_a3/right_knee_shell_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "right_ankle_pitch_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00315163, 0, 0.00019267)
+        float3 physics:diagonalInertia = (0.000023079738, 0.00001751, 0.000036960257)
+        float physics:mass = 0.10100813
+        quatf physics:principalAxes = (0.9999977, 0, 0.0021613284, 0)
+
+        def PhysicsRevoluteJoint "right_ankle_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 54.75
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/right_ankle_pitch_Link>
+            rel physics:body1 = </agibot_a3/right_ankle_roll_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -19.999998
+            float physics:upperLimit = 19.999998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "right_ankle_roll_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.02822865, 0.0000012, -0.04852586)
+        float3 physics:diagonalInertia = (0.00079077005, 0.00404439, 0.0041823997)
+        float physics:mass = 0.8254499
+        quatf physics:principalAxes = (0.9990477, 0.00005538555, 0.04363361, 0.0000066410657)
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexDecomposition"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "right_knee_shell_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, 0, 0)
+        float3 physics:diagonalInertia = (0, 0, 0)
+        float physics:mass = 0
+        quatf physics:principalAxes = (1, 0, 0, 0)
+    }
+
+    def Xform "waist_yaw_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0018168, -0.00204337, -0.02286188)
+        float3 physics:diagonalInertia = (0.00018369785, 0.00023208492, 0.0003608673)
+        float physics:mass = 0.2451942
+        quatf physics:principalAxes = (0.99716806, -0.012424589, 0.029548705, -0.068031415)
+
+        def PhysicsRevoluteJoint "waist_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 46
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/waist_yaw_Link>
+            rel physics:body1 = </agibot_a3/waist_roll_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -19.999998
+            float physics:upperLimit = 19.999998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "waist_roll_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.02, 0, 0.0024982)
+        float3 physics:diagonalInertia = (0.00002952, 0.00002953, 0.000048)
+        float physics:mass = 0.13538218
+        quatf physics:principalAxes = (1, 0, 0, 0)
+
+        def PhysicsRevoluteJoint "waist_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 118
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/waist_roll_Link>
+            rel physics:body1 = </agibot_a3/torso_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.02, 0, 0.005)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -27.999998
+            float physics:upperLimit = 24
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "torso_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.02086592, -0.00021074, 0.19568358)
+        float3 physics:diagonalInertia = (0.21945494, 0.17468116, 0.117941536)
+        float physics:mass = 17.47677
+        quatf physics:principalAxes = (0.9997416, 0.005159763, -0.018438242, -0.012256986)
+
+        def PhysicsRevoluteJoint "head_yaw_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 6
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/torso_Link>
+            rel physics:body1 = </agibot_a3/head_yaw_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.0303, 0, 0.28896)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -60
+            float physics:upperLimit = 60
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsFixedJoint "imu_in_torso_joint"
+        {
+            rel physics:body0 = </agibot_a3/torso_Link>
+            rel physics:body1 = </agibot_a3/imu_in_torso_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0.11185)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "left_shoulder_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 60
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/torso_Link>
+            rel physics:body1 = </agibot_a3/left_shoulder_pitch_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.0303, 0.14822, 0.28382)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.99904823, 0.043619156, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -164.99998
+            float physics:upperLimit = 164.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "right_shoulder_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 60
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/torso_Link>
+            rel physics:body1 = </agibot_a3/right_shoulder_pitch_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.0303, -0.14822, 0.28382)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.99904823, -0.043619156, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -164.99998
+            float physics:upperLimit = 164.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsFixedJoint "torso_shell_joint"
+        {
+            rel physics:body0 = </agibot_a3/torso_Link>
+            rel physics:body1 = </agibot_a3/torso_shell_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+
+    def Xform "head_yaw_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.00051068, -0.00466266, 0.17380702)
+        float3 physics:diagonalInertia = (0.0021957755, 0.0021124561, 0.0010893287)
+        float physics:mass = 0.56545985
+        quatf physics:principalAxes = (0.9964596, 0.052663498, -0.036202285, 0.054628834)
+
+        def PhysicsRevoluteJoint "head_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 6
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/head_yaw_Link>
+            rel physics:body1 = </agibot_a3/head_pitch_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0, 0.21904)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -24.999998
+            float physics:upperLimit = 15
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "head_pitch_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0204937, 0.00056856, 0.04702398)
+        float3 physics:diagonalInertia = (0.011829013, 0.010535614, 0.008894934)
+        float physics:mass = 1.5347958
+        quatf physics:principalAxes = (0.97304857, -0.0072180135, -0.23046757, 0.0030288352)
+    }
+
+    def Xform "imu_in_torso_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00319251, 0.01088, 0.00140846)
+        float3 physics:diagonalInertia = (0.00000286, 0.00000278, 0.00000527)
+        float physics:mass = 0.02
+        quatf physics:principalAxes = (1, 0, 0, 0)
+    }
+
+    def Xform "left_shoulder_pitch_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00096906, 0.05477427, 0.00016529)
+        float3 physics:diagonalInertia = (0.0011797787, 0.00095633086, 0.0009891907)
+        float physics:mass = 1.0194474
+        quatf physics:principalAxes = (0.9995721, -0.020465398, 0.0038739513, 0.020537276)
+
+        def PhysicsRevoluteJoint "left_shoulder_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 60
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/left_shoulder_pitch_Link>
+            rel physics:body1 = </agibot_a3/left_shoulder_roll_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0.059, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -4.9999995
+            float physics:upperLimit = 149.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "left_shoulder_roll_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00085399, 0.00181228, -0.08722436)
+        float3 physics:diagonalInertia = (0.002449481, 0.002737631, 0.0012517981)
+        float physics:mass = 0.9585477
+        quatf physics:principalAxes = (0.9986935, -0.016448455, 0.047543816, -0.008956851)
+
+        def PhysicsRevoluteJoint "left_shoulder_yaw_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 24
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/left_shoulder_roll_Link>
+            rel physics:body1 = </agibot_a3/left_shoulder_yaw_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, -0.0028935, -0.14781)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.99904823, -0.043619156, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -159.99998
+            float physics:upperLimit = 159.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "left_shoulder_yaw_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00426502, -0.00144977, -0.08908275)
+        float3 physics:diagonalInertia = (0.0032646197, 0.003310144, 0.0008482761)
+        float physics:mass = 0.9995587
+        quatf physics:principalAxes = (0.9986553, -0.011699547, -0.04940578, -0.010486073)
+
+        def PhysicsRevoluteJoint "left_elbow_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 24
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/left_shoulder_yaw_Link>
+            rel physics:body1 = </agibot_a3/left_elbow_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.01, 0, -0.1325)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -54.999996
+            float physics:upperLimit = 99.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "left_elbow_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.07760115, -0.00121006, -0.01040959)
+        float3 physics:diagonalInertia = (0.00053707615, 0.001170249, 0.0012411451)
+        float physics:mass = 0.7120444
+        quatf physics:principalAxes = (0.99848795, -0.020903159, 0.004735685, 0.05062169)
+
+        def PhysicsRevoluteJoint "left_wrist_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 24
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/left_elbow_Link>
+            rel physics:body1 = </agibot_a3/left_wrist_roll_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.129, 0, -0.01)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -159.99998
+            float physics:upperLimit = 159.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "left_wrist_roll_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.02090141, -0.00032839, 0.00001007)
+        float3 physics:diagonalInertia = (0.00016322626, 0.00015118351, 0.00019562025)
+        float physics:mass = 0.19185995
+        quatf physics:principalAxes = (0.9333644, 0.0006593687, -0.0011358521, 0.35892794)
+
+        def PhysicsRevoluteJoint "left_wrist_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 6
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/left_wrist_roll_Link>
+            rel physics:body1 = </agibot_a3/left_wrist_pitch_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.06, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -92.99999
+            float physics:upperLimit = 92.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "left_wrist_pitch_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.02282497, -0.00080274, -0.0007711)
+        float3 physics:diagonalInertia = (0.00023344287, 0.0005158924, 0.00051473477)
+        float physics:mass = 0.56746364
+        quatf physics:principalAxes = (0.99965864, -0.008006163, 0.017374702, 0.017797321)
+
+        def PhysicsRevoluteJoint "left_wrist_yaw_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 6
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/left_wrist_pitch_Link>
+            rel physics:body1 = </agibot_a3/left_wrist_yaw_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.046, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -92.99999
+            float physics:upperLimit = 92.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "left_wrist_yaw_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.02101656, 0.00006725, -0.00216659)
+        float3 physics:diagonalInertia = (0.00006428792, 0.000088650486, 0.000045731602)
+        float physics:mass = 0.08067756
+        quatf physics:principalAxes = (0.99661165, -0.00014349708, 0.082221635, 0.0022127207)
+
+        def PhysicsFixedJoint "left_hand_palm_joint"
+        {
+            rel physics:body0 = </agibot_a3/left_wrist_yaw_Link>
+            rel physics:body1 = </agibot_a3/L_palm>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.048, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+
+    def Xform "right_shoulder_pitch_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00097159, -0.05477421, 0.00018343)
+        float3 physics:diagonalInertia = (0.0011797142, 0.0009562197, 0.0009890059)
+        float physics:mass = 1.0194192
+        quatf physics:principalAxes = (0.9997679, 0.00573035, 0.0031494016, -0.02052802)
+
+        def PhysicsRevoluteJoint "right_shoulder_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 60
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/right_shoulder_pitch_Link>
+            rel physics:body1 = </agibot_a3/right_shoulder_roll_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, -0.059, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.99904823, 0.043619156, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -149.99998
+            float physics:upperLimit = 4.9999995
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "right_shoulder_roll_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00086832, -0.00940738, -0.08673441)
+        float3 physics:diagonalInertia = (0.002449406, 0.0027375128, 0.0012517314)
+        float physics:mass = 0.95852345
+        quatf physics:principalAxes = (0.9984513, -0.027101345, 0.047947455, 0.007848332)
+
+        def PhysicsRevoluteJoint "right_shoulder_yaw_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 24
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/right_shoulder_roll_Link>
+            rel physics:body1 = </agibot_a3/right_shoulder_yaw_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, -0.01, -0.1475)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -159.99998
+            float physics:upperLimit = 159.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "right_shoulder_yaw_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.00413428, 0.00146128, -0.08953274)
+        float3 physics:diagonalInertia = (0.0032798294, 0.0033258267, 0.00084830413)
+        float physics:mass = 0.9985994
+        quatf physics:principalAxes = (0.99865067, 0.013266135, -0.048246272, -0.01389471)
+
+        def PhysicsRevoluteJoint "right_elbow_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 24
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/right_shoulder_yaw_Link>
+            rel physics:body1 = </agibot_a3/right_elbow_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.01, 0, -0.133)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -54.999996
+            float physics:upperLimit = 99.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "right_elbow_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.07765463, 0.00122539, -0.01032076)
+        float3 physics:diagonalInertia = (0.0005380531, 0.0011662181, 0.0012361789)
+        float physics:mass = 0.7118777
+        quatf physics:principalAxes = (0.9982927, 0.028354695, 0.007873948, -0.050455667)
+
+        def PhysicsRevoluteJoint "right_wrist_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 24
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/right_elbow_Link>
+            rel physics:body1 = </agibot_a3/right_wrist_roll_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.129, 0, -0.01)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -159.99998
+            float physics:upperLimit = 159.99998
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "right_wrist_roll_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.02090141, 0.00032839, -0.00001007)
+        float3 physics:diagonalInertia = (0.00016322626, 0.00015118351, 0.00019562025)
+        float physics:mass = 0.19185995
+        quatf physics:principalAxes = (0.9333644, 0.0006593687, 0.0011358521, -0.35892794)
+
+        def PhysicsRevoluteJoint "right_wrist_pitch_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 6
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/right_wrist_roll_Link>
+            rel physics:body1 = </agibot_a3/right_wrist_pitch_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.06, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -92.99999
+            float physics:upperLimit = 92.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "right_wrist_pitch_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.02282497, 0.00080274, 0.0007711)
+        float3 physics:diagonalInertia = (0.00023344287, 0.0005158924, 0.00051473477)
+        float physics:mass = 0.56746364
+        quatf physics:principalAxes = (0.99965864, -0.008006163, -0.017374702, -0.017797321)
+
+        def PhysicsRevoluteJoint "right_wrist_yaw_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 6
+            float drive:angular:physics:stiffness = 0
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/right_wrist_pitch_Link>
+            rel physics:body1 = </agibot_a3/right_wrist_yaw_Link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.046, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -92.99999
+            float physics:upperLimit = 92.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "right_wrist_yaw_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.02101656, -0.00006725, 0.00216659)
+        float3 physics:diagonalInertia = (0.00006428792, 0.000088650486, 0.000045731602)
+        float physics:mass = 0.08067756
+        quatf physics:principalAxes = (0.99661165, -0.00014349708, -0.082221635, -0.0022127207)
+
+        def PhysicsFixedJoint "right_hand_palm_joint"
+        {
+            rel physics:body0 = </agibot_a3/right_wrist_yaw_Link>
+            rel physics:body1 = </agibot_a3/R_palm>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.048, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+
+    def Xform "torso_shell_Link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, 0, 0)
+        float3 physics:diagonalInertia = (0, 0, 0)
+        float physics:mass = 0
+        quatf physics:principalAxes = (1, 0, 0, 0)
+    }
+
+    def Xform "R_index_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009337, -0.0000237, 0.0063625)
+        float3 physics:diagonalInertia = (0.0000067647798, 0.00000781, 0.0000023452205)
+        float physics:mass = 0.0349
+        quatf physics:principalAxes = (0.9992979, 0, 0.037465446, 0)
+
+        def PhysicsRevoluteJoint "R_index_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/R_index_abad_link>
+            rel physics:body1 = </agibot_a3/R_index_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.001025, 0, 0.017575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 84.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "R_index_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0002904, 0.0000482, 0.0167403)
+        float3 physics:diagonalInertia = (7.6066596e-7, 7.7e-7, 1.5933408e-7)
+        float physics:mass = 0.0047
+        quatf physics:principalAxes = (0.99986154, 0, -0.016641272, 0)
+
+        def PhysicsFixedJoint "R_index_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/R_index_dip_link>
+            rel physics:body1 = </agibot_a3/R_index_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.00131, 0, 0.03841)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_index_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009312, -0.0000098, 0.0120489)
+        float3 physics:diagonalInertia = (0.0000032075259, 0.00000323, 5.824738e-7)
+        float physics:mass = 0.0125
+        quatf physics:principalAxes = (0.997724, 0, 0.06743056, 0)
+
+        def PhysicsRevoluteJoint "R_index_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/R_index_pip_link>
+            rel physics:body1 = </agibot_a3/R_index_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.0014266, 0, 0.036)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 100.49999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_index_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+
+    def Xform "R_middle_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009337, -0.0000237, 0.0063625)
+        float3 physics:diagonalInertia = (0.0000067647798, 0.00000781, 0.0000023452205)
+        float physics:mass = 0.0349
+        quatf physics:principalAxes = (0.9992979, 0, 0.037465446, 0)
+
+        def PhysicsRevoluteJoint "R_middle_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/R_middle_abad_link>
+            rel physics:body1 = </agibot_a3/R_middle_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.001025, 0, 0.017575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 84.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "R_middle_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0002904, 0.0000482, 0.0167403)
+        float3 physics:diagonalInertia = (7.6066596e-7, 7.7e-7, 1.5933408e-7)
+        float physics:mass = 0.0047
+        quatf physics:principalAxes = (0.99986154, 0, -0.016641272, 0)
+
+        def PhysicsFixedJoint "R_middle_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/R_middle_dip_link>
+            rel physics:body1 = </agibot_a3/R_middle_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.00131, 0, 0.03841)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_middle_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009312, -0.0000098, 0.0120489)
+        float3 physics:diagonalInertia = (0.0000032075259, 0.00000323, 5.824738e-7)
+        float physics:mass = 0.0125
+        quatf physics:principalAxes = (0.997724, 0, 0.06743056, 0)
+
+        def PhysicsRevoluteJoint "R_middle_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/R_middle_pip_link>
+            rel physics:body1 = </agibot_a3/R_middle_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.0014266, 0, 0.036)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 100.49999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_middle_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+
+    def Xform "R_palm" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0455754, -0.0071151, 0.0044599)
+        float3 physics:diagonalInertia = (0.00011998099, 0.00023720926, 0.00020692976)
+        float physics:mass = 0.2175
+        quatf physics:principalAxes = (0.9934606, 0.034216773, 0.06409988, 0.08807086)
+
+        def PhysicsRevoluteJoint "R_index_abad_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.863
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/R_palm>
+            rel physics:body1 = </agibot_a3/R_index_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.094423, -0.00069782, 0.026958)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, 0.49999997, 0.49999997, 0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -9.4
+            float physics:upperLimit = 0
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsFixedJoint "R_middle_abad_joint"
+        {
+            rel physics:body0 = </agibot_a3/R_palm>
+            rel physics:body1 = </agibot_a3/R_middle_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.096423, -0.0031978, 0.0079501)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, 0.49999997, 0.49999997, 0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "R_pinky_abad_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 3.393
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/R_palm>
+            rel physics:body1 = </agibot_a3/R_pinky_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.089423, -0.00069782, -0.03005)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, 0.49999997, 0.49999997, 0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 10.599999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "R_ring_abad_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 2.766
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/R_palm>
+            rel physics:body1 = </agibot_a3/R_ring_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.094423, -0.0021978, -0.01105)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, 0.49999997, 0.49999997, 0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 9.7
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "R_thumb_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 0.784
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 64.200005
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/R_palm>
+            rel physics:body1 = </agibot_a3/R_thumb_roll_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.046851, 0, 0.018529)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, 0.49999997, 0.49999997, 0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -1.6999999
+            float physics:upperLimit = 64.24999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_pinky_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009337, -0.0000237, 0.0063625)
+        float3 physics:diagonalInertia = (0.0000067647798, 0.00000781, 0.0000023452205)
+        float physics:mass = 0.0349
+        quatf physics:principalAxes = (0.9992979, 0, 0.037465446, 0)
+
+        def PhysicsRevoluteJoint "R_pinky_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/R_pinky_abad_link>
+            rel physics:body1 = </agibot_a3/R_pinky_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.001025, 0, 0.017575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 84.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "R_pinky_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0002904, 0.0000482, 0.0167403)
+        float3 physics:diagonalInertia = (7.6066596e-7, 7.7e-7, 1.5933408e-7)
+        float physics:mass = 0.0047
+        quatf physics:principalAxes = (0.99986154, 0, -0.016641272, 0)
+
+        def PhysicsFixedJoint "R_pinky_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/R_pinky_dip_link>
+            rel physics:body1 = </agibot_a3/R_pinky_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.00131, 0, 0.03841)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_pinky_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009312, -0.0000098, 0.0120489)
+        float3 physics:diagonalInertia = (0.0000032075259, 0.00000323, 5.824738e-7)
+        float physics:mass = 0.0125
+        quatf physics:principalAxes = (0.997724, 0, 0.06743056, 0)
+
+        def PhysicsRevoluteJoint "R_pinky_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/R_pinky_pip_link>
+            rel physics:body1 = </agibot_a3/R_pinky_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.0014266, 0, 0.036)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 100.49999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_pinky_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+
+    def Xform "R_ring_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009337, -0.0000237, 0.0063625)
+        float3 physics:diagonalInertia = (0.0000067647798, 0.00000781, 0.0000023452205)
+        float physics:mass = 0.0349
+        quatf physics:principalAxes = (0.9992979, 0, 0.037465446, 0)
+
+        def PhysicsRevoluteJoint "R_ring_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/R_ring_abad_link>
+            rel physics:body1 = </agibot_a3/R_ring_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.001025, 0, 0.017575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 84.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "R_ring_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0002904, 0.0000482, 0.0167403)
+        float3 physics:diagonalInertia = (7.6066596e-7, 7.7e-7, 1.5933408e-7)
+        float physics:mass = 0.0047
+        quatf physics:principalAxes = (0.99986154, 0, -0.016641272, 0)
+
+        def PhysicsFixedJoint "R_ring_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/R_ring_dip_link>
+            rel physics:body1 = </agibot_a3/R_ring_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.00131, 0, 0.03841)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_ring_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009312, -0.0000098, 0.0120489)
+        float3 physics:diagonalInertia = (0.0000032075259, 0.00000323, 5.824738e-7)
+        float physics:mass = 0.0125
+        quatf physics:principalAxes = (0.997724, 0, 0.06743056, 0)
+
+        def PhysicsRevoluteJoint "R_ring_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/R_ring_pip_link>
+            rel physics:body1 = </agibot_a3/R_ring_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.0014266, 0, 0.036)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 100.49999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_ring_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+
+    def Xform "R_thumb_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, 0.0120925, -0.0060829)
+        float3 physics:diagonalInertia = (0.000001210165, 9.823513e-7, 5.9748396e-7)
+        float physics:mass = 0.0061
+        quatf physics:principalAxes = (0.9992004, -0.03910864, 0.008198156, 0.0013965573)
+
+        def PhysicsRevoluteJoint "R_thumb_mcp_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 10000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/R_thumb_abad_link>
+            rel physics:body1 = </agibot_a3/R_thumb_mcp_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0.0265, -0.0058001)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 48.219997
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "R_thumb_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0001343, 0.0104003, -0.0042117)
+        float3 physics:diagonalInertia = (0.0000011, 6.4978275e-7, 0.0000011102172)
+        float physics:mass = 0.011
+        quatf physics:principalAxes = (0.970696, 0.24031131, 0, 0)
+
+        def PhysicsFixedJoint "R_thumb_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/R_thumb_dip_link>
+            rel physics:body1 = </agibot_a3/R_thumb_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0.02311, -0.01374)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_thumb_mcp_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0000145, 0.019045, 0.0020161)
+        float3 physics:diagonalInertia = (0.000011490104, 0.000005107809, 0.000010542086)
+        float physics:mass = 0.045
+        quatf physics:principalAxes = (0.9987821, 0.049058393, -0.005246586, -0.00018083393)
+
+        def PhysicsRevoluteJoint "R_thumb_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 65
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/R_thumb_mcp_link>
+            rel physics:body1 = </agibot_a3/R_thumb_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0.036229, 0.0026606)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 65
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_thumb_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0004121, 0.0066398, -0.0025675)
+        float3 physics:diagonalInertia = (0.0000045603074, 0.0000022910683, 0.0000041786247)
+        float physics:mass = 0.0284
+        quatf physics:principalAxes = (0.9786038, 0.16806452, -0.117712095, 0.015260734)
+
+        def PhysicsRevoluteJoint "R_thumb_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/R_thumb_pip_link>
+            rel physics:body1 = </agibot_a3/R_thumb_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, 0.026054, -0.008672)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 65
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "R_thumb_roll_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.018588, -0.0062386, 0.0002106)
+        float3 physics:diagonalInertia = (0.000003644969, 0.0000026817625, 0.0000017532684)
+        float physics:mass = 0.0179
+        quatf physics:principalAxes = (0.99896383, 0.03380483, -0.018581193, -0.024152977)
+
+        def PhysicsRevoluteJoint "R_thumb_abad_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 0.588
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/R_thumb_roll_link>
+            rel physics:body1 = </agibot_a3/R_thumb_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.020033, 0.004292, 0.00075)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -94.1
+            float physics:upperLimit = 2.6
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "R_thumb_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+
+    def Xform "L_index_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009337, -0.0000237, 0.0063625)
+        float3 physics:diagonalInertia = (0.0000067647798, 0.00000781, 0.0000023452205)
+        float physics:mass = 0.0349
+        quatf physics:principalAxes = (0.9992979, 0, 0.037465446, 0)
+
+        def PhysicsRevoluteJoint "L_index_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/L_index_abad_link>
+            rel physics:body1 = </agibot_a3/L_index_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.001025, 0, 0.017575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 84.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "L_index_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0002904, 0.0000482, 0.0167403)
+        float3 physics:diagonalInertia = (7.6066596e-7, 7.7e-7, 1.5933408e-7)
+        float physics:mass = 0.0047
+        quatf physics:principalAxes = (0.99986154, 0, -0.016641272, 0)
+
+        def PhysicsFixedJoint "L_index_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/L_index_dip_link>
+            rel physics:body1 = </agibot_a3/L_index_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.00131, 0, 0.03841)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_index_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009312, -0.0000098, 0.0120489)
+        float3 physics:diagonalInertia = (0.0000032075259, 0.00000323, 5.824738e-7)
+        float physics:mass = 0.0125
+        quatf physics:principalAxes = (0.997724, 0, 0.06743056, 0)
+
+        def PhysicsRevoluteJoint "L_index_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/L_index_pip_link>
+            rel physics:body1 = </agibot_a3/L_index_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.0014266, 0, 0.036)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 100.49999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_index_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+
+    def Xform "L_middle_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009337, -0.0000237, 0.0063625)
+        float3 physics:diagonalInertia = (0.0000067647798, 0.00000781, 0.0000023452205)
+        float physics:mass = 0.0349
+        quatf physics:principalAxes = (0.9992979, 0, 0.037465446, 0)
+
+        def PhysicsRevoluteJoint "L_middle_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/L_middle_abad_link>
+            rel physics:body1 = </agibot_a3/L_middle_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.001025, 0, 0.017575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 84.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "L_middle_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0002904, 0.0000482, 0.0167403)
+        float3 physics:diagonalInertia = (7.6066596e-7, 7.7e-7, 1.5933408e-7)
+        float physics:mass = 0.0047
+        quatf physics:principalAxes = (0.99986154, 0, -0.016641272, 0)
+
+        def PhysicsFixedJoint "L_middle_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/L_middle_dip_link>
+            rel physics:body1 = </agibot_a3/L_middle_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.00131, 0, 0.03841)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_middle_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009312, -0.0000098, 0.0120489)
+        float3 physics:diagonalInertia = (0.0000032075259, 0.00000323, 5.824738e-7)
+        float physics:mass = 0.0125
+        quatf physics:principalAxes = (0.997724, 0, 0.06743056, 0)
+
+        def PhysicsRevoluteJoint "L_middle_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/L_middle_pip_link>
+            rel physics:body1 = </agibot_a3/L_middle_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.0014266, 0, 0.036)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 100.49999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_middle_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+
+    def Xform "L_palm" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0455754, 0.0071151, 0.0044599)
+        float3 physics:diagonalInertia = (0.00011998099, 0.00023720926, 0.00020692976)
+        float physics:mass = 0.2175
+        quatf physics:principalAxes = (0.9934606, -0.034216773, 0.06409988, -0.08807086)
+
+        def PhysicsRevoluteJoint "L_index_abad_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.863
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/L_palm>
+            rel physics:body1 = </agibot_a3/L_index_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.094423, 0.00069782, 0.026958)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, -0.49999997, 0.49999997, -0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 9.4
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsFixedJoint "L_middle_abad_joint"
+        {
+            rel physics:body0 = </agibot_a3/L_palm>
+            rel physics:body1 = </agibot_a3/L_middle_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.096423, 0.0031978, 0.0079501)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, -0.49999997, 0.49999997, -0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "L_pinky_abad_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 3.393
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/L_palm>
+            rel physics:body1 = </agibot_a3/L_pinky_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.089423, 0.00069782, -0.03005)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, -0.49999997, 0.49999997, -0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -10.599999
+            float physics:upperLimit = 0
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "L_ring_abad_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 2.766
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/L_palm>
+            rel physics:body1 = </agibot_a3/L_ring_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.094423, 0.0021978, -0.01105)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, -0.49999997, 0.49999997, -0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -9.7
+            float physics:upperLimit = 0
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def PhysicsRevoluteJoint "L_thumb_roll_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 0.784
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = -64.200005
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/L_palm>
+            rel physics:body1 = </agibot_a3/L_thumb_roll_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.046851, 0, 0.018529)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.49999997, -0.49999997, 0.49999997, -0.49999997)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -64.24999
+            float physics:upperLimit = 1.6999999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_pinky_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009337, -0.0000237, 0.0063625)
+        float3 physics:diagonalInertia = (0.0000067647798, 0.00000781, 0.0000023452205)
+        float physics:mass = 0.0349
+        quatf physics:principalAxes = (0.9992979, 0, 0.037465446, 0)
+
+        def PhysicsRevoluteJoint "L_pinky_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/L_pinky_abad_link>
+            rel physics:body1 = </agibot_a3/L_pinky_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.001025, 0, 0.017575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 84.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "L_pinky_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0002904, 0.0000482, 0.0167403)
+        float3 physics:diagonalInertia = (7.6066596e-7, 7.7e-7, 1.5933408e-7)
+        float physics:mass = 0.0047
+        quatf physics:principalAxes = (0.99986154, 0, -0.016641272, 0)
+
+        def PhysicsFixedJoint "L_pinky_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/L_pinky_dip_link>
+            rel physics:body1 = </agibot_a3/L_pinky_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.00131, 0, 0.03841)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_pinky_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009312, -0.0000098, 0.0120489)
+        float3 physics:diagonalInertia = (0.0000032075259, 0.00000323, 5.824738e-7)
+        float physics:mass = 0.0125
+        quatf physics:principalAxes = (0.997724, 0, 0.06743056, 0)
+
+        def PhysicsRevoluteJoint "L_pinky_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/L_pinky_pip_link>
+            rel physics:body1 = </agibot_a3/L_pinky_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.0014266, 0, 0.036)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 100.49999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_pinky_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+
+    def Xform "L_ring_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009337, -0.0000237, 0.0063625)
+        float3 physics:diagonalInertia = (0.0000067647798, 0.00000781, 0.0000023452205)
+        float physics:mass = 0.0349
+        quatf physics:principalAxes = (0.9992979, 0, 0.037465446, 0)
+
+        def PhysicsRevoluteJoint "L_ring_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/L_ring_abad_link>
+            rel physics:body1 = </agibot_a3/L_ring_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.001025, 0, 0.017575)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 84.99999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "L_ring_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0002904, 0.0000482, 0.0167403)
+        float3 physics:diagonalInertia = (7.6066596e-7, 7.7e-7, 1.5933408e-7)
+        float physics:mass = 0.0047
+        quatf physics:principalAxes = (0.99986154, 0, -0.016641272, 0)
+
+        def PhysicsFixedJoint "L_ring_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/L_ring_dip_link>
+            rel physics:body1 = </agibot_a3/L_ring_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.00131, 0, 0.03841)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_ring_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0009312, -0.0000098, 0.0120489)
+        float3 physics:diagonalInertia = (0.0000032075259, 0.00000323, 5.824738e-7)
+        float physics:mass = 0.0125
+        quatf physics:principalAxes = (0.997724, 0, 0.06743056, 0)
+
+        def PhysicsRevoluteJoint "L_ring_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </agibot_a3/L_ring_pip_link>
+            rel physics:body1 = </agibot_a3/L_ring_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (-0.0014266, 0, 0.036)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = 0
+            float physics:upperLimit = 100.49999
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_ring_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+
+    def Xform "L_thumb_abad_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, -0.0120925, -0.0060829)
+        float3 physics:diagonalInertia = (0.000001210165, 9.823513e-7, 5.9748396e-7)
+        float physics:mass = 0.0061
+        quatf physics:principalAxes = (0.9992004, 0.03910864, 0.008198156, -0.0013965573)
+
+        def PhysicsRevoluteJoint "L_thumb_mcp_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 0
+            float drive:angular:physics:maxForce = 1.764
+            float drive:angular:physics:stiffness = 10000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/L_thumb_abad_link>
+            rel physics:body1 = </agibot_a3/L_thumb_mcp_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, -0.0265, -0.0058001)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -48.219997
+            float physics:upperLimit = 0
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "L_thumb_dip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0001343, -0.0104003, -0.0042117)
+        float3 physics:diagonalInertia = (0.0000011, 6.4978275e-7, 0.0000011102172)
+        float physics:mass = 0.011
+        quatf physics:principalAxes = (0.970696, -0.24031131, 0, 0)
+
+        def PhysicsFixedJoint "L_thumb_tip_joint"
+        {
+            rel physics:body0 = </agibot_a3/L_thumb_dip_link>
+            rel physics:body1 = </agibot_a3/L_thumb_tip>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, -0.02311, -0.01374)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_thumb_mcp_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (-0.0000145, -0.019045, 0.0020161)
+        float3 physics:diagonalInertia = (0.000011490104, 0.000005107809, 0.000010542086)
+        float physics:mass = 0.045
+        quatf physics:principalAxes = (0.9987821, -0.049058393, -0.005246586, 0.00018083393)
+
+        def PhysicsRevoluteJoint "L_thumb_pip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = -65
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/L_thumb_mcp_link>
+            rel physics:body1 = </agibot_a3/L_thumb_pip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, -0.036229, 0.0026606)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -65
+            float physics:upperLimit = 0
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_thumb_pip_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.0004121, -0.0066398, -0.0025675)
+        float3 physics:diagonalInertia = (0.0000045603074, 0.0000022910683, 0.0000041786247)
+        float physics:mass = 0.0284
+        quatf physics:principalAxes = (0.9786038, -0.16806452, -0.117712095, -0.015260734)
+
+        def PhysicsRevoluteJoint "L_thumb_dip_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 15
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = 0
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "X"
+            rel physics:body0 = </agibot_a3/L_thumb_pip_link>
+            rel physics:body1 = </agibot_a3/L_thumb_dip_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0, -0.026054, -0.008672)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -65
+            float physics:upperLimit = 0
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+            )
+            {
+                uniform token physics:approximation = "convexHull"
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "L_thumb_roll_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0.018588, 0.0062386, 0.0002106)
+        float3 physics:diagonalInertia = (0.000003644969, 0.0000026817625, 0.0000017532684)
+        float physics:mass = 0.0179
+        quatf physics:principalAxes = (0.99896383, -0.03380483, -0.018581193, 0.024152977)
+
+        def PhysicsRevoluteJoint "L_thumb_abad_joint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular", "PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:damping = 80
+            float drive:angular:physics:maxForce = 0.588
+            float drive:angular:physics:stiffness = 1000
+            float drive:angular:physics:targetPosition = -2.6000001
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Z"
+            rel physics:body0 = </agibot_a3/L_thumb_roll_link>
+            rel physics:body1 = </agibot_a3/L_thumb_abad_link>
+            float physics:breakForce = 3.4028235e38
+            float physics:breakTorque = 3.4028235e38
+            point3f physics:localPos0 = (0.020033, -0.004292, 0.00075)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -2.6
+            float physics:upperLimit = 94.1
+            custom float state:angular:physics:position = 0
+            custom float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Xform "L_thumb_tip" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3 physics:diagonalInertia = (0.00001, 0.00001, 0.00001)
+        float physics:mass = 0.000001
+    }
+}
+

@@ -1,0 +1,2156 @@
+#usda 1.0
+(
+    defaultPrim = "agibot_a3"
+    doc = """Simulation-ready base (Structure 3.0 / Isaac Sim 6.0.1).
+
+Kinematic hierarchy + visual/collider instance references.
+Materials via sublayer materials.usda.
+Physics lives in payloads/Physics/{physics,physx,mujoco}.usda via interface Physics variant.
+"""
+    metersPerUnit = 1
+    upAxis = "Z"
+    subLayers = [
+        @./materials.usda@
+    ]
+)
+def Xform "agibot_a3"
+{
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 1.09)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Xform "pelvis_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "sites_imu"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "imu"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "sites_waist_rgbd"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.11991709197930728, 0, -0.016415733936910204)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "sites_lidar_neck"
+        {
+            quatd xformOp:orient = (6.123233995736766e-17, -1, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0.42766)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/pelvis_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/pelvis_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "imu_in_pelvis_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.004370000213384628, 0, -0.21164999902248383)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/imu_in_pelvis_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "left_hip_pitch_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.9914448261260986, -0.13052649796009064, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0.12297999858856201, -0.17874999344348907)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_hip_pitch_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "left_hip_roll_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0.12297968566417694, -0.22247274219989777)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_hip_roll_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/left_hip_roll_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_hip_yaw_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0.12297968566417694, -0.22247274219989777)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_hip_yaw_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/left_hip_yaw_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_knee_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0.12297968566417694, -0.5924727320671082)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_knee_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/left_knee_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_ankle_pitch_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0.12297968566417694, -1.0074727535247803)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_ankle_pitch_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "left_ankle_roll_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0.12297968566417694, -1.0074727535247803)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_ankle_roll_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/left_ankle_roll_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_knee_shell_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0.12297968566417694, -0.5924727320671082)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_knee_shell_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "right_hip_pitch_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.9914448261260986, 0.13052649796009064, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, -0.12297999858856201, -0.17874999344348907)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_hip_pitch_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "right_hip_roll_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.0010999999940395355, -0.12297968566417694, -0.22247274219989777)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_hip_roll_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/right_hip_roll_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_hip_yaw_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.0010999999940395355, -0.12297968566417694, -0.22247274219989777)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_hip_yaw_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/right_hip_yaw_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_knee_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.0010999999940395355, -0.12297968566417694, -0.5924727320671082)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_knee_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/right_knee_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_ankle_pitch_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.0010999999940395355, -0.12297968566417694, -1.0074727535247803)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_ankle_pitch_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "right_ankle_roll_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.0010999999940395355, -0.12297968566417694, -1.0074727535247803)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_ankle_roll_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/right_ankle_roll_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_knee_shell_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.0010999999940395355, -0.12297968566417694, -0.5924727320671082)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_knee_shell_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "waist_yaw_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/waist_yaw_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "waist_roll_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/waist_roll_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "torso_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.019999999552965164, 0, 0.004999999888241291)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "sites_imu"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "imu"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "sites_lidar_neck"
+        {
+            quatd xformOp:orient = (-1.6081226496766364e-16, 6.123233995736767e-17, 1, 6.123233995736767e-17)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.028219742485225213, -1.7157724688557007e-29, 0.4164911589939475)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "sites_armpit"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.03, -0.14, 0.187)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "sites_waist_rgbd"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.1244, -0.035, -0.0323)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/torso_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "head_yaw_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        token visibility = "inherited"
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.010300001129508018, 0, 0.29396000504493713)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "sites_lidar_neck"
+        {
+            quatd xformOp:orient = (6.123233995736766e-17, -1, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.017, -4.683861624749758e-31, 0.133)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/head_yaw_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "head_pitch_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.010300001129508018, 0, 0.5130000114440918)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "sites_lidar_neck"
+        {
+            quatd xformOp:orient = (6.123233995736766e-17, 6.123233995736766e-17, 1, 6.123233995736766e-17)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.0008129280317747574, 4.738095811983702e-29, -0.09201466826382232)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "sites_camera_left"
+        {
+            quatd xformOp:orient = (0.7071067811865476, 0, 0, 0.7071067811865475)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.0122, 0.0786, 0.0367)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "sites_camera_right"
+        {
+            quatd xformOp:orient = (0.7071067811865476, 0, 0, -0.7071067811865475)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.0122, -0.0786, 0.0367)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "sites_camera_back"
+        {
+            quatd xformOp:orient = (6.123233995736766e-17, 0, 0, 1)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.0836, 0, 0.0408)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "sites_left_camera"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.0882, 0.03, -0.0266)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "sites_right_camera"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.0882, -0.03, -0.026)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/head_pitch_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "imu_in_torso_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.019999999552965164, 0, 0.11685000360012054)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/imu_in_torso_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "left_shoulder_pitch_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.9990482330322266, 0.04361915588378906, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.010300001129508018, 0.1482200026512146, 0.2888199985027313)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_shoulder_pitch_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/left_shoulder_pitch_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_shoulder_roll_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.9990482330322266, 0.04361915588378906, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.010300001129508018, 0.20699548721313477, 0.29396215081214905)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_shoulder_roll_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "left_shoulder_yaw_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.010300001129508018, 0.21699541807174683, 0.14646242558956146)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_shoulder_yaw_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "left_elbow_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.0203000009059906, 0.21699541807174683, 0.013962432742118835)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_elbow_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/left_elbow_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "left_wrist_roll_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.1492999941110611, 0.21699541807174683, 0.003962432965636253)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_wrist_roll_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "left_wrist_pitch_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.2092999964952469, 0.21699541807174683, 0.003962432965636253)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_wrist_pitch_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "left_wrist_yaw_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.25529998540878296, 0.21699541807174683, 0.003962432965636253)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/left_wrist_yaw_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "right_shoulder_pitch_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.9990482330322266, -0.04361915588378906, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.010300001129508018, -0.1482200026512146, 0.2888199985027313)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_shoulder_pitch_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/right_shoulder_pitch_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_shoulder_roll_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.010300001129508018, -0.20699548721313477, 0.29396215081214905)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_shoulder_roll_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "right_shoulder_yaw_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.010300001129508018, -0.2169954925775528, 0.14646215736865997)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_shoulder_yaw_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "right_elbow_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.0203000009059906, -0.2169954925775528, 0.013462156057357788)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_elbow_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/right_elbow_Link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "right_wrist_roll_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.1492999941110611, -0.2169954925775528, 0.003462156280875206)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_wrist_roll_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "right_wrist_pitch_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.2092999964952469, -0.2169954925775528, 0.003462156280875206)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_wrist_pitch_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_191919>
+        }
+    }
+
+    def Xform "right_wrist_yaw_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.25529998540878296, -0.2169954925775528, 0.003462156280875206)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/right_wrist_yaw_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "torso_shell_Link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.019999999552965164, 0, 0.004999999888241291)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "sites_chest_rgbd"
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0.16, 0.014, 0.207)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/torso_shell_Link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_100100100>
+        }
+    }
+
+    def Xform "R_index_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.397722989320755, -0.21769782900810242, 0.03091810829937458)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_index_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_green>
+        }
+    }
+
+    def Xform "R_index_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.45129796862602234, -0.2180994153022766, 0.030918100848793983)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_index_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_orange>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_index_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_index_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4152979850769043, -0.21667282283306122, 0.03091810643672943)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_index_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_index_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_index_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.48970794677734375, -0.21940940618515015, 0.030918095260858536)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_index_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    def Xform "R_middle_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.39972299337387085, -0.22019781172275543, 0.011910208500921726)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_middle_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_green>
+        }
+    }
+
+    def Xform "R_middle_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4532979726791382, -0.22059941291809082, 0.011910200119018555)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_middle_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_orange>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_middle_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_middle_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.41729798913002014, -0.21917280554771423, 0.011910205706954002)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_middle_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_middle_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_middle_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.491707980632782, -0.22190940380096436, 0.011910194531083107)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_middle_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    def Xform "R_palm" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.30329999327659607, -0.21700000762939453, 0.003960108384490013)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_palm/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_silver>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_palm/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_pinky_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.3927229940891266, -0.21769782900810242, -0.02608989179134369)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_pinky_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_green>
+        }
+    }
+
+    def Xform "R_pinky_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4462979733943939, -0.2180994153022766, -0.026089901104569435)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_pinky_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_orange>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_pinky_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_pinky_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4102979898452759, -0.21667282283306122, -0.026089895516633987)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_pinky_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_pinky_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_pinky_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.48470795154571533, -0.21940940618515015, -0.026089906692504883)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_pinky_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    def Xform "R_ring_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.397722989320755, -0.2191978096961975, -0.007089891470968723)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_ring_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_green>
+        }
+    }
+
+    def Xform "R_ring_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.45129796862602234, -0.2195993959903717, -0.007089899852871895)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_ring_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_orange>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_ring_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_ring_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4152979850769043, -0.2181728035211563, -0.007089894264936447)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_ring_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_ring_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_ring_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.48970794677734375, -0.22090938687324524, -0.0070899054408073425)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_ring_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    def Xform "R_thumb_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.3509010076522827, -0.1969670057296753, 0.0267811082303524)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_thumb_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_blue>
+        }
+    }
+
+    def Xform "R_thumb_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.3390895128250122, -0.1969670057296753, 0.11556409299373627)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_thumb_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_thumb_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_thumb_mcp_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.34510090947151184, -0.1969670057296753, 0.05328110605478287)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_thumb_mcp_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_thumb_mcp_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_thumb_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.34776151180267334, -0.1969670057296753, 0.08951009809970856)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_thumb_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/R_thumb_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "R_thumb_roll_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.350151002407074, -0.21700000762939453, 0.02248910814523697)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_thumb_roll_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_blue>
+        }
+    }
+
+    def Xform "R_thumb_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, 0.4999999701976776, 0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.32534950971603394, -0.1969670057296753, 0.13867409527301788)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/R_thumb_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    def Xform "L_index_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.397722989320755, 0.21769782900810242, 0.03091810829937458)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_index_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_green>
+        }
+    }
+
+    def Xform "L_index_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.45129796862602234, 0.2180994153022766, 0.030918100848793983)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_index_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_orange>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_index_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_index_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4152979850769043, 0.21667282283306122, 0.03091810643672943)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_index_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_index_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_index_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.48970794677734375, 0.21940940618515015, 0.030918095260858536)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_index_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    def Xform "L_middle_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.39972299337387085, 0.22019781172275543, 0.011910208500921726)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_middle_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_green>
+        }
+    }
+
+    def Xform "L_middle_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4532979726791382, 0.22059941291809082, 0.011910200119018555)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_middle_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_orange>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_middle_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_middle_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.41729798913002014, 0.21917280554771423, 0.011910205706954002)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_middle_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_middle_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_middle_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.491707980632782, 0.22190940380096436, 0.011910194531083107)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_middle_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    def Xform "L_palm" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.30329999327659607, 0.21700000762939453, 0.003960108384490013)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_palm/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_silver>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_palm/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_pinky_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.3927229940891266, 0.21769782900810242, -0.02608989179134369)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_pinky_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_green>
+        }
+    }
+
+    def Xform "L_pinky_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4462979733943939, 0.2180994153022766, -0.026089901104569435)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_pinky_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_orange>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_pinky_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_pinky_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4102979898452759, 0.21667282283306122, -0.026089895516633987)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_pinky_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_pinky_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_pinky_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.48470795154571533, 0.21940940618515015, -0.026089906692504883)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_pinky_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    def Xform "L_ring_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.397722989320755, 0.2191978096961975, -0.007089891470968723)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_ring_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_green>
+        }
+    }
+
+    def Xform "L_ring_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.45129796862602234, 0.2195993959903717, -0.007089899852871895)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_ring_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_orange>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_ring_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_ring_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.4152979850769043, 0.2181728035211563, -0.007089894264936447)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_ring_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_ring_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_ring_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.48970794677734375, 0.22090938687324524, -0.0070899054408073425)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_ring_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    def Xform "L_thumb_abad_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.3509010076522827, 0.1969670057296753, 0.0267811082303524)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_thumb_abad_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_blue>
+        }
+    }
+
+    def Xform "L_thumb_dip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.3390895128250122, 0.1969670057296753, 0.11556409299373627)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_thumb_dip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_thumb_dip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_thumb_mcp_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.34510090947151184, 0.1969670057296753, 0.05328110605478287)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_thumb_mcp_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_brown>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_thumb_mcp_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_thumb_pip_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.34776151180267334, 0.1969670057296753, 0.08951009809970856)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_thumb_pip_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+
+        def Xform "colliders"
+        {
+            def Mesh "collider" (
+                prepend references = @./instances.usda@</Instances/L_thumb_pip_link/collider>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "L_thumb_roll_link" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.350151002407074, 0.21700000762939453, 0.02248910814523697)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_thumb_roll_link/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_blue>
+        }
+    }
+
+    def Xform "L_thumb_tip" (
+        apiSchemas = None
+    )
+    {
+        rel physics:simulationOwner
+        quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, 0.4999999701976776, -0.4999999701976776)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.32534950971603394, 0.1969670057296753, 0.13867409527301788)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Sphere "visuals" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            prepend references = @./instances.usda@</Instances/L_thumb_tip/visuals>
+        )
+        {
+            custom rel material:binding = </agibot_a3/Looks/material_white>
+        }
+    }
+
+    over "Looks"
+    {
+        over "material_191919" (
+            delete apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            over "Shader" (
+                delete apiSchemas = ["NodeDefAPI"]
+            )
+            {
+            }
+        }
+
+        over "material_100100100"
+        {
+            over "Shader" (
+                delete apiSchemas = ["NodeDefAPI"]
+            )
+            {
+            }
+        }
+
+        over "DefaultMaterial"
+        {
+            over "DefaultMaterial" (
+                delete apiSchemas = ["NodeDefAPI"]
+            )
+            {
+            }
+        }
+
+        over "material_blue"
+        {
+            over "Shader" (
+                delete apiSchemas = ["NodeDefAPI"]
+            )
+            {
+            }
+        }
+
+        over "material_brown"
+        {
+            over "Shader" (
+                delete apiSchemas = ["NodeDefAPI"]
+            )
+            {
+            }
+        }
+
+        over "material_green"
+        {
+            over "Shader" (
+                delete apiSchemas = ["NodeDefAPI"]
+            )
+            {
+            }
+        }
+
+        over "material_orange"
+        {
+            over "Shader" (
+                delete apiSchemas = ["NodeDefAPI"]
+            )
+            {
+            }
+        }
+
+        over "material_silver"
+        {
+            over "Shader" (
+                delete apiSchemas = ["NodeDefAPI"]
+            )
+            {
+            }
+        }
+
+        over "material_white"
+        {
+            over "Shader" (
+                delete apiSchemas = ["NodeDefAPI"]
+            )
+            {
+            }
+        }
+    }
+}
+

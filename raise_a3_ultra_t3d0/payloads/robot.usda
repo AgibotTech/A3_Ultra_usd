@@ -1,0 +1,1319 @@
+#usda 1.0
+(
+    defaultPrim = "agibot_a3"
+    doc = """Isaac Robot Schema layer (Structure 3.0 / Isaac Sim 6.0.1).
+
+Applies IsaacRobotAPI / IsaacLinkAPI / IsaacJointAPI / IsaacSiteAPI.
+Compose as a sublayer of the interface asset; physics/geometry remain in base.usda.
+"""
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "agibot_a3" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string isaac:description = "AgiBot Raise A3 Ultra T3D0 humanoid"
+    string isaac:namespace = "agibot_a3"
+    token isaac:robotType = "Humanoid"
+    token isaac:license = "Mulan PSL v2"
+    string isaac:version = "6.0.1-structure30"
+    string isaac:source = "isaac_simulator/usd/raise_a3_ultra_t3d0.usd"
+    rel isaac:physics:robotLinks = [
+        </agibot_a3/pelvis_link>,
+        </agibot_a3/imu_in_pelvis_Link>,
+        </agibot_a3/left_hip_pitch_Link>,
+        </agibot_a3/right_hip_pitch_Link>,
+        </agibot_a3/waist_yaw_Link>,
+        </agibot_a3/left_hip_roll_Link>,
+        </agibot_a3/right_hip_roll_Link>,
+        </agibot_a3/waist_roll_Link>,
+        </agibot_a3/left_hip_yaw_Link>,
+        </agibot_a3/right_hip_yaw_Link>,
+        </agibot_a3/torso_Link>,
+        </agibot_a3/left_knee_Link>,
+        </agibot_a3/right_knee_Link>,
+        </agibot_a3/head_yaw_Link>,
+        </agibot_a3/imu_in_torso_Link>,
+        </agibot_a3/left_shoulder_pitch_Link>,
+        </agibot_a3/right_shoulder_pitch_Link>,
+        </agibot_a3/torso_shell_Link>,
+        </agibot_a3/left_ankle_pitch_Link>,
+        </agibot_a3/left_knee_shell_Link>,
+        </agibot_a3/right_ankle_pitch_Link>,
+        </agibot_a3/right_knee_shell_Link>,
+        </agibot_a3/head_pitch_Link>,
+        </agibot_a3/left_shoulder_roll_Link>,
+        </agibot_a3/right_shoulder_roll_Link>,
+        </agibot_a3/left_ankle_roll_Link>,
+        </agibot_a3/right_ankle_roll_Link>,
+        </agibot_a3/left_shoulder_yaw_Link>,
+        </agibot_a3/right_shoulder_yaw_Link>,
+        </agibot_a3/left_elbow_Link>,
+        </agibot_a3/right_elbow_Link>,
+        </agibot_a3/left_wrist_roll_Link>,
+        </agibot_a3/right_wrist_roll_Link>,
+        </agibot_a3/left_wrist_pitch_Link>,
+        </agibot_a3/right_wrist_pitch_Link>,
+        </agibot_a3/left_wrist_yaw_Link>,
+        </agibot_a3/right_wrist_yaw_Link>,
+        </agibot_a3/L_palm>,
+        </agibot_a3/R_palm>,
+        </agibot_a3/L_index_abad_link>,
+        </agibot_a3/L_middle_abad_link>,
+        </agibot_a3/L_pinky_abad_link>,
+        </agibot_a3/L_ring_abad_link>,
+        </agibot_a3/L_thumb_roll_link>,
+        </agibot_a3/R_index_abad_link>,
+        </agibot_a3/R_middle_abad_link>,
+        </agibot_a3/R_pinky_abad_link>,
+        </agibot_a3/R_ring_abad_link>,
+        </agibot_a3/R_thumb_roll_link>,
+        </agibot_a3/L_index_pip_link>,
+        </agibot_a3/L_middle_pip_link>,
+        </agibot_a3/L_pinky_pip_link>,
+        </agibot_a3/L_ring_pip_link>,
+        </agibot_a3/L_thumb_abad_link>,
+        </agibot_a3/R_index_pip_link>,
+        </agibot_a3/R_middle_pip_link>,
+        </agibot_a3/R_pinky_pip_link>,
+        </agibot_a3/R_ring_pip_link>,
+        </agibot_a3/R_thumb_abad_link>,
+        </agibot_a3/L_index_dip_link>,
+        </agibot_a3/L_middle_dip_link>,
+        </agibot_a3/L_pinky_dip_link>,
+        </agibot_a3/L_ring_dip_link>,
+        </agibot_a3/L_thumb_mcp_link>,
+        </agibot_a3/R_index_dip_link>,
+        </agibot_a3/R_middle_dip_link>,
+        </agibot_a3/R_pinky_dip_link>,
+        </agibot_a3/R_ring_dip_link>,
+        </agibot_a3/R_thumb_mcp_link>,
+        </agibot_a3/L_index_tip>,
+        </agibot_a3/L_middle_tip>,
+        </agibot_a3/L_pinky_tip>,
+        </agibot_a3/L_ring_tip>,
+        </agibot_a3/L_thumb_pip_link>,
+        </agibot_a3/R_index_tip>,
+        </agibot_a3/R_middle_tip>,
+        </agibot_a3/R_pinky_tip>,
+        </agibot_a3/R_ring_tip>,
+        </agibot_a3/R_thumb_pip_link>,
+        </agibot_a3/L_thumb_dip_link>,
+        </agibot_a3/R_thumb_dip_link>,
+        </agibot_a3/L_thumb_tip>,
+        </agibot_a3/R_thumb_tip>,
+    ]
+    rel isaac:physics:robotJoints = [
+        </agibot_a3/pelvis_link/imu_in_pelvis_joint>,
+        </agibot_a3/pelvis_link/left_hip_pitch_joint>,
+        </agibot_a3/pelvis_link/right_hip_pitch_joint>,
+        </agibot_a3/pelvis_link/waist_yaw_joint>,
+        </agibot_a3/left_hip_pitch_Link/left_hip_roll_joint>,
+        </agibot_a3/right_hip_pitch_Link/right_hip_roll_joint>,
+        </agibot_a3/waist_yaw_Link/waist_roll_joint>,
+        </agibot_a3/left_hip_roll_Link/left_hip_yaw_joint>,
+        </agibot_a3/right_hip_roll_Link/right_hip_yaw_joint>,
+        </agibot_a3/waist_roll_Link/waist_pitch_joint>,
+        </agibot_a3/left_hip_yaw_Link/left_knee_joint>,
+        </agibot_a3/right_hip_yaw_Link/right_knee_joint>,
+        </agibot_a3/torso_Link/head_yaw_joint>,
+        </agibot_a3/torso_Link/imu_in_torso_joint>,
+        </agibot_a3/torso_Link/left_shoulder_pitch_joint>,
+        </agibot_a3/torso_Link/right_shoulder_pitch_joint>,
+        </agibot_a3/torso_Link/torso_shell_joint>,
+        </agibot_a3/left_knee_Link/left_ankle_pitch_joint>,
+        </agibot_a3/left_knee_Link/left_knee_shell_joint>,
+        </agibot_a3/right_knee_Link/right_ankle_pitch_joint>,
+        </agibot_a3/right_knee_Link/right_knee_shell_joint>,
+        </agibot_a3/head_yaw_Link/head_pitch_joint>,
+        </agibot_a3/left_shoulder_pitch_Link/left_shoulder_roll_joint>,
+        </agibot_a3/right_shoulder_pitch_Link/right_shoulder_roll_joint>,
+        </agibot_a3/left_ankle_pitch_Link/left_ankle_roll_joint>,
+        </agibot_a3/right_ankle_pitch_Link/right_ankle_roll_joint>,
+        </agibot_a3/left_shoulder_roll_Link/left_shoulder_yaw_joint>,
+        </agibot_a3/right_shoulder_roll_Link/right_shoulder_yaw_joint>,
+        </agibot_a3/left_shoulder_yaw_Link/left_elbow_joint>,
+        </agibot_a3/right_shoulder_yaw_Link/right_elbow_joint>,
+        </agibot_a3/left_elbow_Link/left_wrist_roll_joint>,
+        </agibot_a3/right_elbow_Link/right_wrist_roll_joint>,
+        </agibot_a3/left_wrist_roll_Link/left_wrist_pitch_joint>,
+        </agibot_a3/right_wrist_roll_Link/right_wrist_pitch_joint>,
+        </agibot_a3/left_wrist_pitch_Link/left_wrist_yaw_joint>,
+        </agibot_a3/right_wrist_pitch_Link/right_wrist_yaw_joint>,
+        </agibot_a3/left_wrist_yaw_Link/left_hand_palm_joint>,
+        </agibot_a3/right_wrist_yaw_Link/right_hand_palm_joint>,
+        </agibot_a3/L_palm/L_index_abad_joint>,
+        </agibot_a3/L_palm/L_middle_abad_joint>,
+        </agibot_a3/L_palm/L_pinky_abad_joint>,
+        </agibot_a3/L_palm/L_ring_abad_joint>,
+        </agibot_a3/L_palm/L_thumb_roll_joint>,
+        </agibot_a3/R_palm/R_index_abad_joint>,
+        </agibot_a3/R_palm/R_middle_abad_joint>,
+        </agibot_a3/R_palm/R_pinky_abad_joint>,
+        </agibot_a3/R_palm/R_ring_abad_joint>,
+        </agibot_a3/R_palm/R_thumb_roll_joint>,
+        </agibot_a3/L_index_abad_link/L_index_pip_joint>,
+        </agibot_a3/L_middle_abad_link/L_middle_pip_joint>,
+        </agibot_a3/L_pinky_abad_link/L_pinky_pip_joint>,
+        </agibot_a3/L_ring_abad_link/L_ring_pip_joint>,
+        </agibot_a3/L_thumb_roll_link/L_thumb_abad_joint>,
+        </agibot_a3/R_index_abad_link/R_index_pip_joint>,
+        </agibot_a3/R_middle_abad_link/R_middle_pip_joint>,
+        </agibot_a3/R_pinky_abad_link/R_pinky_pip_joint>,
+        </agibot_a3/R_ring_abad_link/R_ring_pip_joint>,
+        </agibot_a3/R_thumb_roll_link/R_thumb_abad_joint>,
+        </agibot_a3/L_index_pip_link/L_index_dip_joint>,
+        </agibot_a3/L_middle_pip_link/L_middle_dip_joint>,
+        </agibot_a3/L_pinky_pip_link/L_pinky_dip_joint>,
+        </agibot_a3/L_ring_pip_link/L_ring_dip_joint>,
+        </agibot_a3/L_thumb_abad_link/L_thumb_mcp_joint>,
+        </agibot_a3/R_index_pip_link/R_index_dip_joint>,
+        </agibot_a3/R_middle_pip_link/R_middle_dip_joint>,
+        </agibot_a3/R_pinky_pip_link/R_pinky_dip_joint>,
+        </agibot_a3/R_ring_pip_link/R_ring_dip_joint>,
+        </agibot_a3/R_thumb_abad_link/R_thumb_mcp_joint>,
+        </agibot_a3/L_index_dip_link/L_index_tip_joint>,
+        </agibot_a3/L_middle_dip_link/L_middle_tip_joint>,
+        </agibot_a3/L_pinky_dip_link/L_pinky_tip_joint>,
+        </agibot_a3/L_ring_dip_link/L_ring_tip_joint>,
+        </agibot_a3/L_thumb_mcp_link/L_thumb_pip_joint>,
+        </agibot_a3/R_index_dip_link/R_index_tip_joint>,
+        </agibot_a3/R_middle_dip_link/R_middle_tip_joint>,
+        </agibot_a3/R_pinky_dip_link/R_pinky_tip_joint>,
+        </agibot_a3/R_ring_dip_link/R_ring_tip_joint>,
+        </agibot_a3/R_thumb_mcp_link/R_thumb_pip_joint>,
+        </agibot_a3/L_thumb_pip_link/L_thumb_dip_joint>,
+        </agibot_a3/R_thumb_pip_link/R_thumb_dip_joint>,
+        </agibot_a3/L_thumb_dip_link/L_thumb_tip_joint>,
+        </agibot_a3/R_thumb_dip_link/R_thumb_tip_joint>,
+    ]
+
+    over "pelvis_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "imu_in_pelvis_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_hip_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_hip_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "waist_yaw_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "sites_imu" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_imu"
+            token isaac:forwardAxis = "X"
+            over "imu" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "site:imu"
+                token isaac:forwardAxis = "X"
+            }
+
+        }
+
+        over "sites_waist_rgbd" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_waist_rgbd"
+            token isaac:forwardAxis = "X"
+        }
+
+        over "sites_lidar_neck" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_lidar_neck"
+            token isaac:forwardAxis = "X"
+        }
+
+    }
+
+    over "imu_in_pelvis_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "left_hip_pitch_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_hip_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_hip_pitch_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_hip_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "waist_yaw_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "waist_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "left_hip_roll_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_hip_yaw_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_hip_roll_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_hip_yaw_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "waist_roll_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "waist_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "left_hip_yaw_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_knee_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_hip_yaw_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_knee_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "torso_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "head_yaw_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "imu_in_torso_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_shoulder_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_shoulder_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "torso_shell_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "sites_imu" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_imu"
+            token isaac:forwardAxis = "X"
+            over "imu" (
+                prepend apiSchemas = ["IsaacSiteAPI"]
+            )
+            {
+                string isaac:Description = "site:imu"
+                token isaac:forwardAxis = "X"
+            }
+
+        }
+
+        over "sites_lidar_neck" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_lidar_neck"
+            token isaac:forwardAxis = "X"
+        }
+
+        over "sites_armpit" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_armpit"
+            token isaac:forwardAxis = "X"
+        }
+
+        over "sites_waist_rgbd" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_waist_rgbd"
+            token isaac:forwardAxis = "X"
+        }
+
+    }
+
+    over "left_knee_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_ankle_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_knee_shell_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_knee_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_ankle_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_knee_shell_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "head_yaw_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "head_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "sites_lidar_neck" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_lidar_neck"
+            token isaac:forwardAxis = "X"
+        }
+
+    }
+
+    over "imu_in_torso_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "left_shoulder_pitch_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_shoulder_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_shoulder_pitch_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_shoulder_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "torso_shell_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "sites_chest_rgbd" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_chest_rgbd"
+            token isaac:forwardAxis = "X"
+        }
+
+    }
+
+    over "left_ankle_pitch_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_ankle_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "left_knee_shell_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "right_ankle_pitch_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_ankle_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_knee_shell_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "head_pitch_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "sites_lidar_neck" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_lidar_neck"
+            token isaac:forwardAxis = "X"
+        }
+
+        over "sites_camera_left" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_camera_left"
+            token isaac:forwardAxis = "X"
+        }
+
+        over "sites_camera_right" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_camera_right"
+            token isaac:forwardAxis = "X"
+        }
+
+        over "sites_camera_back" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_camera_back"
+            token isaac:forwardAxis = "X"
+        }
+
+        over "sites_left_camera" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_left_camera"
+            token isaac:forwardAxis = "X"
+        }
+
+        over "sites_right_camera" (
+            prepend apiSchemas = ["IsaacSiteAPI"]
+        )
+        {
+            string isaac:Description = "site:sites_right_camera"
+            token isaac:forwardAxis = "X"
+        }
+
+    }
+
+    over "left_shoulder_roll_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_shoulder_yaw_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_shoulder_roll_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_shoulder_yaw_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "left_ankle_roll_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "right_ankle_roll_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "left_shoulder_yaw_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_elbow_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_shoulder_yaw_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_elbow_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "left_elbow_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_wrist_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_elbow_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_wrist_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "left_wrist_roll_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_wrist_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_wrist_roll_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_wrist_pitch_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "left_wrist_pitch_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_wrist_yaw_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_wrist_pitch_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_wrist_yaw_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "left_wrist_yaw_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "left_hand_palm_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "right_wrist_yaw_Link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "right_hand_palm_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_palm" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_index_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "L_middle_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "L_pinky_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "L_ring_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "L_thumb_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_palm" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_index_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "R_middle_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "R_pinky_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "R_ring_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "R_thumb_roll_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_index_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_index_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_middle_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_middle_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_pinky_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_pinky_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_ring_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_ring_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_thumb_roll_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_thumb_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_index_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_index_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_middle_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_middle_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_pinky_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_pinky_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_ring_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_ring_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_thumb_roll_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_thumb_abad_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_index_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_index_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_middle_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_middle_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_pinky_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_pinky_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_ring_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_ring_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_thumb_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_thumb_mcp_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_index_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_index_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_middle_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_middle_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_pinky_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_pinky_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_ring_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_ring_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_thumb_abad_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_thumb_mcp_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_index_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_index_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_middle_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_middle_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_pinky_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_pinky_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_ring_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_ring_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_thumb_mcp_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_thumb_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_index_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_index_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_middle_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_middle_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_pinky_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_pinky_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_ring_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_ring_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_thumb_mcp_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_thumb_pip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_index_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "L_middle_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "L_pinky_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "L_ring_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "L_thumb_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_thumb_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_index_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "R_middle_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "R_pinky_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "R_ring_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "R_thumb_pip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_thumb_dip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_thumb_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "L_thumb_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "R_thumb_dip_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        over "R_thumb_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+    }
+
+    over "L_thumb_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+    over "R_thumb_tip" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+    }
+
+}
